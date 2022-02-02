@@ -1,38 +1,11 @@
-
-import styled from "styled-components"
-import { Link } from 'react-router-dom'
+import styled from "styled-components";
 
 const Container = styled.div`
-    margin-top: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 `
 
-const Dados = styled.div`
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    margin-top: 25px;
-    gap: 12px;
-`
-const StyledLink = styled(Link)`
-    
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #FFFF;
-    font-family: 'Lexend Deca', sans-serif;
-    font-size: 14px;
-
-`;
 const Button = styled.button`
     height: 45px;
     width: 300px;
@@ -55,8 +28,8 @@ const AlignButton = styled.div`
 `
 const Input = styled.input`
     margin-bottom: 12px;
-    height: 45px;
-    width: 300px;
+    height: 30px;
+    width: 270px;
     border: 1px solid #D4D4D4;
     background-color: #FFFFFF;
     color: black;
@@ -68,14 +41,36 @@ const Input = styled.input`
     }
 `;
 
+const Dados = styled.div`
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 25px;
+    gap: 12px;
+`
+
+const TopBar = styled.div`
+    width: 100%;
+    height: 60px;
+    background-color: #8C11BE;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+`
 
 export {
-    Dados,
-    StyledLink,
+    Container,
     Button,
-    Input,
     AlignButton,
-    Container
-
+    Dados,
+    TopBar,
+    Input
 
 }

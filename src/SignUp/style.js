@@ -56,12 +56,21 @@ const Input = styled.input`
         font-size: 20px;
     }
 `;
+const Container = styled.div`
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
 
+`
 
 export {
     Dados,
     StyledLink,
     Input,
     Button,
-    AlignButton
+    AlignButton,
+    Container
 }

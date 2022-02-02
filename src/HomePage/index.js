@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import logOut from "../assets/Vector.png"
 
@@ -14,11 +15,11 @@ function HomePage() {
                 <p>Não há registros de <br></br>entrada ou saída</p>
             </Resgisters>
             <Buttons>
-                <Button>
+                <Button to="/cashin">
                     <ion-icon name="add-circle-outline"></ion-icon>
                     <p>Nova <br /> entrada</p>
                 </Button>
-                <Button>
+                <Button to="/cashout">
                     <ion-icon name="remove-circle-outline"></ion-icon>
                     <p> Nova <br /> Saída</p>
                 </Button>
@@ -72,7 +73,7 @@ const Buttons = styled.div`
 
     margin-top: 15px;
 `
-const Button = styled.div`
+const Button = styled(Link)`
     width: 135px;
     height: 94px;
 
@@ -96,6 +97,4 @@ const Button = styled.div`
         height: 25px;
     }
     
- ;
-
 `

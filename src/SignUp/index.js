@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Dados, StyledLink, Input, Button, AlignButton } from './style'
+import { Dados, StyledLink, Input, Button, AlignButton, Container } from './style'
 import axios from "axios"
 import logo from "../assets/MyWallet.png"
 
@@ -17,11 +17,8 @@ function SignUp() {
     }
 
 
-
-
-
     return (
-        <>
+        <Container>
             <img src={logo} />
             <Dados>
                 <form onSubmit={handleSignUp}>
@@ -34,11 +31,11 @@ function SignUp() {
                         <Button type="submit">Cadastrar</Button>
                     </AlignButton>
                 </form>
-                <StyledLink to="/signin"> Já tem uma conta? Faça login!</StyledLink>
+                <StyledLink to="/"> Já tem uma conta? Faça login!</StyledLink>
 
             </Dados>
+        </Container>
 
-        </>
 
     );
 } export default SignUp
