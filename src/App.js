@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import LoginPage from "./LoginPage"
+import SignIn from "./SignIn"
+import SignUp from "./SignUp"
 
 
 
@@ -7,7 +8,8 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
             </Routes>
         </BrowserRouter>
 

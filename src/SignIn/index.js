@@ -1,16 +1,15 @@
 
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import logo from "../assets/MyWallet.png"
 import { Dados, StyledLink, Button, Input, AlignButton } from './style'
 import axios from "axios"
 
 
-function LoginPage() {
+function SignIn() {
     const [usuario, setUsuario] = useState()
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
-    const [button, setButton] = useState(true)
 
     const navigate = useNavigate();
 
@@ -25,15 +24,14 @@ function LoginPage() {
         const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login', user);
         promise.then(response => {
             setUsuario(response.data);
-            navigate('/hoje')
+            navigate('/home')
         }
         );
         promise.catch(() => {
 
             alert('Usuário e/ou Senha Inválidos');
-            setButton(true);
             setEmail("");
-            setSenha("")
+            setSenha("");
         }
         );
     }
@@ -55,13 +53,13 @@ function LoginPage() {
                         onChange={(e) => setSenha(e.target.value)}
                         value={senha} />
                     <AlignButton>
-                        <Button type="submit" onClick={() => setButton(false)}>Entrar</Button>
+                        <Button type="submit">Entrar</Button>
                     </AlignButton>
                 </form>
-                <StyledLink to="/cadastro"> Não tem uma conta? cadastre-se!</StyledLink>
+                <StyledLink to="/signup"> Não tem uma conta? cadastre-se!</StyledLink>
             </Dados>
 
         </>
 
     );
-} export default LoginPage
+} export default SignIn

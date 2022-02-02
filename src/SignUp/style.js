@@ -1,6 +1,5 @@
-
-import styled from "styled-components"
-import { Link } from 'react-router-dom'
+import styled from "styled-components";
+import { Link } from "react-router-dom"
 
 const Dados = styled.div`
     width: 300px;
@@ -13,6 +12,7 @@ const Dados = styled.div`
     gap: 12px;
 `
 const StyledLink = styled(Link)`
+    
     height: 45px;
     display: flex;
     justify-content: center;
@@ -20,6 +20,7 @@ const StyledLink = styled(Link)`
     color: #FFFF;
     font-family: 'Lexend Deca', sans-serif;
     font-size: 14px;
+
 `;
 const Button = styled.button`
     height: 45px;
@@ -60,9 +61,7 @@ const Input = styled.input`
 export {
     Dados,
     StyledLink,
-    Button,
     Input,
+    Button,
     AlignButton
-
-
 }
