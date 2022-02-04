@@ -1,8 +1,9 @@
 import { useContext, useState } from "react"
 import { Container, Button, AlignButton, Dados, TopBar, Input } from "./style"
 import axios from 'axios'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import UserContext from "../Context/UserContext"
+
 
 
 
@@ -10,6 +11,7 @@ import UserContext from "../Context/UserContext"
 function CashOut() {
     const [value, setValue] = useState()
     const [description, setDescription] = useState()
+    const date = ''
     const { user } = useContext(UserContext)
     const navigate = useNavigate();
 
@@ -17,7 +19,8 @@ function CashOut() {
         e.preventDefault();
         const body = {
             value: value,
-            description: description
+            description: description,
+            date: date
         }
 
 
@@ -40,6 +43,7 @@ function CashOut() {
         <Container>
             <TopBar>
                 <p>Nova Saída</p>
+                <Link to="/home"><ion-icon color="white" name="return-up-back-outline"></ion-icon></Link>
             </TopBar>
             <Dados>
                 <form onSubmit={handleSignUp}>
