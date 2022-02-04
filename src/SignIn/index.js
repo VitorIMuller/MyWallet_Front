@@ -1,13 +1,14 @@
 
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import logo from "../assets/MyWallet.png"
 import { Dados, StyledLink, Button, Input, AlignButton, Container } from './style'
 import axios from "axios"
+import UserContext from "../Context/UserContext"
 
 
 function SignIn() {
-    const [usuario, setUsuario] = useState()
+    const { setUser } = useContext(UserContext)
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
 
@@ -21,14 +22,13 @@ function SignIn() {
             'password': senha
         }
 
-        const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login', user);
+        const promise = axios.post('http://localhost:5000/signin', user);
         promise.then(response => {
-            setUsuario(response.data);
+            setUser(response.data);
             navigate('/home')
         }
         );
         promise.catch(() => {
-
             alert('Usuário e/ou Senha Inválidos');
             setEmail("");
             setSenha("");
@@ -38,7 +38,6 @@ function SignIn() {
 
     return (
         <Container>
-
             <img src={logo} />
             <Dados>
                 <form onSubmit={handleSignUp}>

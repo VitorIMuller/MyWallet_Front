@@ -6,13 +6,29 @@ import logo from "../assets/MyWallet.png"
 
 
 function SignUp() {
-    const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')
-    const [name, setNome] = useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPAssword] = useState('');
+    const [name, setNome] = useState('');
+    const navigate = useNavigate()
 
     function handleSignUp(e) {
         e.preventDefault();
 
+        if (password === confirmPassword) {
+            const user = {
+                name: name,
+                email: email,
+                password: password
+            }
+            const promise = axios.post("http://localhost:5000/signup", user)
+            promise.then(() => {
+                navigate("/")
+            })
+            promise.catch((error) => alert(error))
+        } else {
+            alert("Senhas não coincidem")
+        }
 
     }
 
@@ -24,8 +40,8 @@ function SignUp() {
                 <form onSubmit={handleSignUp}>
                     <Input type='text' placeholder="Nome" onChange={(e) => setNome(e.target.value)} value={name} />
                     <Input type='email' placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} required />
-                    <Input type='password' placeholder="Senha" onChange={(e) => setSenha(e.target.value)} value={senha} />
-                    <Input type='password' placeholder="Confirme a Senha" />
+                    <Input type='password' placeholder="Senha" onChange={(e) => setPassword(e.target.value)} value={password} />
+                    <Input type='password' placeholder="Confirme a Senha" onChange={(e) => setConfirmPAssword(e.target.value)} value={confirmPassword} />
                     <AlignButton>
 
                         <Button type="submit">Cadastrar</Button>

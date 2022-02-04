@@ -1,5 +1,8 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Container, Button, AlignButton, Dados, TopBar, Input } from "./style"
+import axios from 'axios'
+import { useNavigate } from "react-router-dom"
+import UserContext from "../Context/UserContext"
 
 
 
@@ -7,9 +10,29 @@ import { Container, Button, AlignButton, Dados, TopBar, Input } from "./style"
 function CashOut() {
     const [value, setValue] = useState()
     const [description, setDescription] = useState()
+    const { user } = useContext(UserContext)
+    const navigate = useNavigate();
+
     function handleSignUp(e) {
         e.preventDefault();
+        const body = {
+            value: value,
+            description: description
+        }
 
+
+        const header = {
+            headers: {
+                "authorization": `Bearer ${user.token}`
+            }
+        }
+
+        const promise = axios.post("http://localhost:5000/cashout", body, header)
+        promise.then(() => {
+
+            navigate("/home")
+        })
+        promise.catch((error) => alert(error))
 
     }
 
