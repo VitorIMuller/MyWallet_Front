@@ -10,8 +10,10 @@ function HomePage() {
     const { user } = useContext(UserContext)
     const [historic, setHistoric] = useState([])
     const [isDeposit, setIsDeposit] = useState(false)
+    const [total, setTotal] = useState(0);
+    const [isPositive, setIsPositive] = useState(true)
     let deposit = [];
-    let withdraw;
+    let conta;
 
     function getHistoric() {
 
@@ -26,6 +28,7 @@ function HomePage() {
         promise.then((response) => {
             setHistoric(response.data)
             depositReturn(response.data);
+            saldo(response.data);
         })
         promise.catch((error) => {
             alert(error)
@@ -43,14 +46,17 @@ function HomePage() {
         );
     }
 
-    function saldo() {
-        deposit.map(function soma(valor) {
-            let total = 0;
-            if (valor.type == "deposit") {
-                total = total + valor.value
+    function saldo(deposit) {
+
+        deposit.forEach(element => {
+            if (element.type == "deposit") {
+                conta = total + parseFloat(element.value)
+                setTotal(conta)
+            } else {
+                conta = total - parseFloat(element.value)
+                setTotal(conta)
             }
-            console.log(total)
-        })
+        });
     }
 
     return (
@@ -75,7 +81,7 @@ function HomePage() {
                                 </Register>
                             )
                         })}
-                        <Cash><Saldo>Saldo:</Saldo> <Money>4000</Money></Cash>
+                        <Cash><Saldo>Saldo:</Saldo> <Money isPositive={isPositive}>{total}</Money></Cash>
                     </Historic>
                 </>
             }

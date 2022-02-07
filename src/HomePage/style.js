@@ -141,7 +141,7 @@ const Saldo = styled.div`
 
 const Money = styled.div`
 font-size: 17px;
-color: #03AC00;
+color:  ${props => props.isPositive ? '#03AC00' : '#DE3131'};
 font-weight: 400;
 margin-right: 5px;
 
