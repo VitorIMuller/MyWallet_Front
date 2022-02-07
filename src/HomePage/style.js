@@ -73,11 +73,93 @@ const Button = styled(Link)`
     
 `
 
+const Register = styled.div`
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    width: 100%;
+    height: 30px;
+`
+
+const Date = styled.div`
+    color: #C6C6C6;
+    font-size: 16px;
+    position: absolute;
+    left: 5px;
+
+    width: 40px;
+`
+const Description = styled.div`
+    color: #000000;
+    font-size: 16px;
+    position: absolute;
+    left: 60px;
+    width: 40px;
+`
+
+const Value = styled.div`
+    color: ${props => props.isDeposit == "deposit" ? '#03AC00' : '#DE3131'};
+    font-size: 16px;
+    position: absolute;
+    right: 10px;
+
+    width: 40px;
+`
+const Historic = styled.div`
+    width: 100%;
+    height: 446px;
+    border-radius: 8px;
+    background-color: white; 
+    position: relative;
+
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    color: #868686;
+
+`
+const Cash = styled.div`
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    
+
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+
+
+`
+const Saldo = styled.div`
+    font-size: 17px;
+    color: black;
+    font-weight: 700;
+
+`
+
+const Money = styled.div`
+font-size: 17px;
+color: #03AC00;
+font-weight: 400;
+margin-right: 5px;
+
+`
+
 export {
     Button,
     Buttons,
     Resgisters,
     TopBar,
     LogOut,
-    Container
+    Container,
+    Register,
+    Date,
+    Description,
+    Value,
+    Historic,
+    Cash,
+    Saldo,
+    Money
 }
