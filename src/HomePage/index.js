@@ -24,7 +24,7 @@ function HomePage() {
         }
 
         console.log(header)
-        const promise = axios.get("http://localhost:5000/historic", header)
+        const promise = axios.get(" https://backapimywallet.herokuapp.com/historic", header)
         promise.then((response) => {
             setHistoric(response.data)
             depositReturn(response.data);

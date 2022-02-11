@@ -30,7 +30,7 @@ function CashOut() {
             }
         }
 
-        const promise = axios.post("http://localhost:5000/cashout", body, header)
+        const promise = axios.post(" https://backapimywallet.herokuapp.com/cashout", body, header)
         promise.then(() => {
 
             navigate("/home")

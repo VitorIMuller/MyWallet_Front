@@ -21,7 +21,7 @@ function SignUp() {
                 email: email,
                 password: password
             }
-            const promise = axios.post("http://localhost:5000/signup", user)
+            const promise = axios.post(" https://backapimywallet.herokuapp.com/signup", user)
             promise.then(() => {
                 navigate("/")
             })
