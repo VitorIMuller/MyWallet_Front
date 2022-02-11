@@ -2,6 +2,16 @@
 import styled from "styled-components"
 import { Link } from 'react-router-dom'
 
+const Container = styled.div`
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+
+`
+
 const Dados = styled.div`
     width: 300px;
     display: flex;
@@ -13,6 +23,7 @@ const Dados = styled.div`
     gap: 12px;
 `
 const StyledLink = styled(Link)`
+    
     height: 45px;
     display: flex;
     justify-content: center;
@@ -20,6 +31,7 @@ const StyledLink = styled(Link)`
     color: #FFFF;
     font-family: 'Lexend Deca', sans-serif;
     font-size: 14px;
+
 `;
 const Button = styled.button`
     height: 45px;
@@ -62,7 +74,8 @@ export {
     StyledLink,
     Button,
     Input,
-    AlignButton
+    AlignButton,
+    Container
 
 
 }

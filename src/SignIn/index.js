@@ -1,16 +1,16 @@
 
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useState, useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import logo from "../assets/MyWallet.png"
-import { Dados, StyledLink, Button, Input, AlignButton } from './style'
+import { Dados, StyledLink, Button, Input, AlignButton, Container } from './style'
 import axios from "axios"
+import UserContext from "../Context/UserContext"
 
 
-function LoginPage() {
-    const [usuario, setUsuario] = useState()
+function SignIn() {
+    const { setUser } = useContext(UserContext)
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
-    const [button, setButton] = useState(true)
 
     const navigate = useNavigate();
 
@@ -22,24 +22,22 @@ function LoginPage() {
             'password': senha
         }
 
-        const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login', user);
+        const promise = axios.post('http://localhost:5000/signin', user);
         promise.then(response => {
-            setUsuario(response.data);
-            navigate('/hoje')
+            setUser(response.data);
+            navigate('/home')
         }
         );
         promise.catch(() => {
-
             alert('Usuário e/ou Senha Inválidos');
-            setButton(true);
             setEmail("");
-            setSenha("")
+            setSenha("");
         }
         );
     }
 
     return (
-        <>
+        <Container>
             <img src={logo} />
             <Dados>
                 <form onSubmit={handleSignUp}>
@@ -55,13 +53,14 @@ function LoginPage() {
                         onChange={(e) => setSenha(e.target.value)}
                         value={senha} />
                     <AlignButton>
-                        <Button type="submit" onClick={() => setButton(false)}>Entrar</Button>
+                        <Button type="submit">Entrar</Button>
                     </AlignButton>
                 </form>
-                <StyledLink to="/cadastro"> Não tem uma conta? cadastre-se!</StyledLink>
+                <StyledLink to="/signup"> Não tem uma conta? cadastre-se!</StyledLink>
             </Dados>
+        </Container>
 
-        </>
+
 
     );
-} export default LoginPage
+} export default SignIn
